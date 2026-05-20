@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle Operacional de Escala | AFinanceira</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #0b0f19; color: #fff; padding: 20px; }
+        .container { max-width: 1100px; margin: auto; background: #111625; padding: 25px; border-radius: 12px; border: 1px solid #D4AF37; }
+        h1 { color: #D4AF37; text-align: center; text-transform: uppercase; font-size: 1.6em; margin-bottom: 5px; }
+        .subtitle { text-align: center; color: #8a99ad; font-size: 0.9em; margin-bottom: 30px; }
+        
+        /* Blocos de Tabelas (As 4 Escalas) */
+        .escala-bloco { margin-bottom: 40px; background: #171e30; padding: 20px; border-radius: 8px; border: 1px solid #24314f; }
+        .escala-titulo { color: #D4AF37; font-size: 1.2em; font-weight: bold; text-transform: uppercase; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 2px solid #D4AF37; }
+        .folga-info { color: #ef4444; font-weight: bold; font-size: 0.95em; margin-bottom: 10px; }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { padding: 10px; text-align: center; border: 1px solid #24314f; font-size: 0.85em; }
+        th { background-color: #1f2942; color: #cbd5e1; }
+        
+        /* Checkbox e Configuração Visual */
+        input[type="checkbox"] { width: 16px; height: 16px; cursor: pointer; accent-color: #D4AF37; vertical-align: middle; margin-left: 5px; }
+        
+        .obs-box { background: #1f2942; border-left: 4px solid #D4AF37; padding: 15px; border-radius: 4px; font-size: 0.85em; color: #cbd5e1; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Painel de Escala & Check-in</h1>
+        <div class="subtitle">Monitoramento de Plataformas em Tempo Real ⚓</div>
+
+        <div class="escala-bloco">
+            <div class="escala-titulo">Escala 1: Todos Operando</div>
+            <div class="folga-info">Observações de folgas: Todos | Antônio de férias até 31/05</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Horário</th>
+                        <th>Pixbet</th>
+                        <th>BDS</th>
+                        <th>Betvip</th>
+                        <th>Ganhei</th>
+                        <th>Discord</th>
+                        <th>Pausa / Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>23:00</strong></td><td>Paloma <input type="checkbox" id="e1-2300-Pixbet-Paloma" onchange="salvar('e1', '23_00', 'Pixbet', 'Paloma', this.checked)"></td><td>Leandro <input type="checkbox" id="e1-2300-BDS-Leandro" onchange="salvar('e1', '23_00', 'BDS', 'Leandro', this.checked)"></td><td>Leandro <input type="checkbox" id="e1-2300-Betvip-Leandro" onchange="salvar('e1', '23_00', 'Betvip', 'Leandro', this.checked)"></td><td>Ivah <input type="checkbox" id="e1-2300-Ganhei-Ivah" onchange="salvar('e1', '23_00', 'Ganhei', 'Ivah', this.checked)"></td><td>Todos <input type="checkbox" id="e1-2300-Discord-Todos" onchange="salvar('e1', '23_00', 'Discord', 'Todos', this.checked)"></td><td>-</td></tr>
+                    <tr><td><strong>00:00</strong></td><td>Paloma <input type="checkbox" id="e1-0000-Pixbet-Paloma" onchange="salvar('e1', '00_00', 'Pixbet', 'Paloma', this.checked)"></td><td>Leandro <input type="checkbox" id="e1-0000-BDS-Leandro" onchange="salvar('e1', '00_00', 'BDS', 'Leandro', this.checked)"></td><td>Leandro <input type="checkbox" id="e1-0000-Betvip-Leandro" onchange="salvar('e1', '00_00', 'Betvip', 'Leandro', this.checked)"></td><td>Ivah <input type="checkbox" id="e1-0000-Ganhei-Ivah" onchange="salvar('e1', '00_00', 'Ganhei', 'Ivah', this.checked)"></td><td>Todos <input type="checkbox" id="e1-0000-Discord-Todos" onchange="salvar('e1', '00_00', 'Discord', 'Todos', this.checked)"></td><td>-</td></tr>
+                    <tr><td><strong>01:00</strong></td><td>Ivah <input type="checkbox" id="e1-0100-Pixbet-Ivah" onchange="salvar('e1', '01_00', 'Pixbet', 'Ivah', this.checked)"></td><td>Paloma <input type="checkbox" id="e1-0100-BDS-Paloma" onchange="salvar('e1', '01_00', 'BDS', 'Paloma', this.checked)"></td><td>Paloma <input type="checkbox" id="e1-0100-Betvip-Paloma" onchange="salvar('e1', '01_00', 'Betvip', 'Paloma', this.checked)"></td><td>Leandro <input type="checkbox" id="e1-0100-Ganhei-Leandro" onchange="salvar('e1', '01_00', 'Ganhei', 'Leandro', this.checked)"></td><td>Todos <input type="checkbox" id="e1-0100-Discord-Todos" onchange="salvar('e1', '01_00', 'Discord', 'Todos', this.checked)"></td><td>-</td></tr>
+                    <tr><td><strong>02:00</strong></td><td>Leandro <input type="checkbox" id="e1-0200-Pixbet-Leandro" onchange="salvar('e1', '02_00', 'Pixbet', 'Leandro', this.checked)"></td><td>Ivah <input type="checkbox" id="e1-0200-BDS-Ivah" onchange="salvar('e1', '02_00', 'BDS', 'Ivah', this.checked)"></td><td>Ivah <input type="checkbox" id="e1-0200-Betvip-Ivah" onchange="salvar('e1', '02_00', 'Betvip', 'Ivah', this.checked)"></td><td>Leandro <input type="checkbox" id="e1-0200-Ganhei-Leandro" onchange="salvar('e1', '02_00', 'Ganhei', 'Leandro', this.checked)"></td><td>Ivah e Leandro <input type="checkbox" id="e1-0200-Discord-IvahLeandro" onchange="salvar('e1', '02_00', 'Discord', 'IvahLeandro', this.checked)"></td><td>(Pausa de Paloma)</td></tr>
+                    <tr><td><strong>03:00</strong></td><td>Leandro <input type="checkbox" id="e1-0300-Pixbet-Leandro" onchange="salvar('e1', '03_00', 'Pixbet', 'Leandro', this.checked)"></td><td>Paloma <input type="checkbox" id="e1-0300-BDS-Paloma" onchange="salvar('e1', '03_00', 'BDS', 'Paloma', this.checked)"></td><td>Paloma <input type="checkbox" id="e1-0300-Betvip-Paloma" onchange="salvar('e1', '03_00', 'Betvip', 'Paloma', this.checked)"></td><td>Leandro <input type="checkbox" id="e1-0300-Ganhei-Leandro" onchange="salvar('e1', '03_00', 'Ganhei', 'Leandro', this.checked)"></td><td>Leandro e Paloma <input type="checkbox" id="e1-0300-Discord-LeandroPaloma" onchange="salvar('e1', '03_00', 'Discord', 'LeandroPaloma', this.checked)"></td><td>(Pausa de Ivah)</td></tr>
+                    <tr><td><strong>04:00</strong></td><td>Paloma <input type="checkbox" id="e1-0400-Pixbet-Paloma" onchange="salvar('e1', '04_00', 'Pixbet', 'Paloma', this.checked)"></td><td>Paloma <input type="checkbox" id="e1-0400-BDS-Paloma" onchange="salvar('e1', '04_00', 'BDS', 'Paloma', this.checked)"></td><td>Ivah <input type="checkbox" id="e1-0400-Betvip-Ivah" onchange="salvar('e1', '04_00', 'Betvip', 'Ivah', this.checked)"></td><td>Ivah <input type="checkbox" id="e1-0400-Ganhei-Ivah" onchange="salvar('e1', '04_00', 'Ganhei', 'Ivah', this.checked)"></td><td>Ivah e Paloma <input type="checkbox" id="e1-0400-Discord-IvahPaloma" onchange="salvar('e1', '04_00', 'Discord', 'IvahPaloma', this.checked)"></td><td>(Pausa de Leandro)</td></tr>
+                    <tr><td><strong>05:00</strong></td><td>Ivah <input type="checkbox" id="e1-0500-Pixbet-Ivah" onchange="salvar('e1', '05_00', 'Pixbet', 'Ivah', this.checked)"></td><td>Leandro <input type="checkbox" id="e1-0500-BDS-Leandro" onchange="salvar('e1', '05_00', 'BDS', 'Leandro', this.checked)"></td><td>Leandro <input type="checkbox" id="e1-0500-Betvip-Leandro" onchange="salvar('e1', '05_00', 'Betvip', 'Leandro', this.checked)"></td><td>Paloma <input type="checkbox" id="e1-0500-Ganhei-Paloma" onchange="salvar('e1', '05_00', 'Ganhei', 'Paloma', this.checked)"></td><td>Todos <input type="checkbox" id="e1-0500-Discord-Todos" onchange="salvar('e1', '05_00', 'Discord', 'Todos', this.checked)"></td><td>-</td></tr>
+                    <tr><td><strong>06:00</strong></td><td>Leandro <input type="checkbox" id="e1-0600-Pixbet-Leandro" onchange="salvar('e1', '06_00', 'Pixbet', 'Leandro', this.checked)"></td><td>Ivah <input type="checkbox" id="e1-0600-BDS-Ivah" onchange="salvar('e1', '06_00', 'BDS', 'Ivah', this.checked)"></td><td>Ivah <input type="checkbox" id="e1-0600-Betvip-Ivah" onchange="salvar('e1', '06_00', 'Betvip', 'Ivah', this.checked)"></td><td>Paloma <input type="checkbox" id="e1-0600-Ganhei-Paloma" onchange="salvar('e1', '06_00', 'Ganhei', 'Paloma', this.checked)"></td><td>Todos <input type="checkbox" id="e1-0600-Discord-Todos" onchange="salvar('e1', '06_00', 'Discord', 'Todos', this.checked)"></td><td>-</td></tr>
+                    <tr><td><strong>07:00</strong></td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="escala-bloco">
+            <div class="escala-titulo">Escala 2: Folga de Leandro</div>
+            <div class="folga-info">Observações de folgas: Folga de Leandro | Antônio de férias até 31/05</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Horário</th>
+                        <th>Pixbet</th>
+                        <th>BDS</th>
+                        <th>Betvip</th>
+                        <th>Ganhei</th>
+                        <th>Discord</th>
+                        <th>Pausa / Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>23:00</strong></td><td>Ivah <input type="checkbox" id="e2-2300-Pixbet-Ivah" onchange="salvar('e2', '23_00', 'Pixbet', 'Ivah', this.checked)"></td><td>Paloma <input type="checkbox" id="e2-2300-BDS-Paloma" onchange="salvar('e2', '23_00', 'BDS', 'Paloma', this.checked)"></td><td>Paloma <input type="checkbox" id="e2-2300-Betvip-Paloma" onchange="salvar('e2', '23_00', 'Betvip', 'Paloma', this.checked)"></td><td>Ivah <input type="checkbox" id="e2-2300-Ganhei-Ivah" onchange="salvar('e2', '23_00', 'Ganhei', 'Ivah', this.checked)"></td><td>Todos <input type="checkbox" id="e2-2300-Discord-Todos" onchange="salvar('e2', '23_00', 'Discord', 'Todos', this.checked)"></td><td>-</td></tr>
+                    <tr><td><strong>00:00</strong></td><td>Ivah <input type="checkbox" id="e2-0000-Pixbet-Ivah" onchange="salvar('e2', '00_00', 'Pixbet', 'Ivah', this.checked)"></td><td>Paloma <input type="checkbox" id="e2-0000-BDS-Paloma" onchange="salvar('e2', '00_00', 'BDS', 'Paloma', this.checked)"></td><td>Paloma <input type="checkbox" id="e2-0000-Betvip-Paloma" onchange="salvar('e2', '00_00', 'Betvip', 'Paloma', this.checked)"></td><td>Ivah <input type="checkbox" id="e2-0000-Ganhei-Ivah" onchange="salvar('e2', '00_00', 'Ganhei', 'Ivah', this.checked)"></td><td>Todos <input type="checkbox" id="e2-0000-Discord-Todos" onchange="salvar('e2', '00_00', 'Discord', 'Todos', this.checked)"></td><td>-</td></tr>
+                    <tr><td><strong>01:00</strong></td><td>Ivah <input type="checkbox" id="e2-0100-Pixbet-Ivah" onchange="salvar('e2', '01_00', 'Pixbet', 'Ivah', this.checked)"></td><td>Paloma <input type="checkbox" id="e2-0100-BDS-Paloma" onchange="salvar('e2', '01_00', 'BDS', 'Paloma', this.checked)"></td><td>Paloma <input type="checkbox" id="e2-0100-Betvip-Paloma" onchange="salvar('e2', '01_00', 'Betvip', 'Paloma', this.checked)"></td><td>Ivah <input type="checkbox" id="e2-0100-Ganhei-Ivah" onchange="salvar('e2', '01_00', 'Ganhei', 'Ivah', this.checked)"></td><td>Todos <input type="checkbox" id="e2-0100-Discord-Todos" onchange="salvar('e2', '01_00', 'Discord', 'Todos', this.checked)"></td><td>-</td></tr>
+                    <tr><td><strong>02:00</strong></td><td>Ivah <input type="checkbox" id="e2-0200-Pixbet-Ivah" onchange="salvar('e2', '02_00', 'Pixbet', 'Ivah', this.checked)"></td><td>Ivah <input type="checkbox" id="e2-0200-BDS-Ivah" onchange="salvar('e2', '02_00', 'BDS', 'Ivah', this.checked)"></td><td>Ivah <input type="checkbox" id="e2-0200-Betvip-Ivah" onchange="salvar('e2', '02_00', 'Betvip', 'Ivah', this.checked)"></td><td>Ivah <input type="checkbox" id="e2-0200-Ganhei-Ivah" onchange="salvar('e2', '02_00', 'Ganhei', 'Ivah', this.checked)"></td><td>Ivah <input type="checkbox" id="e2-0200-Discord-Ivah" onchange="salvar('e2', '02_00', 'Discord', 'Ivah', this.checked)"></td><td>(Pausa de Paloma)</td></tr>
+                    <tr><td><strong>03:00</strong></td><td>Paloma <input type="checkbox" id="e2-0300-Pixbet-Paloma" onchange="salvar('e2', '03_00', 'Pixbet', 'Paloma', this.checked)"></td><td>Paloma <input type="checkbox" id="e2-0300-BDS-Paloma" onchange="salvar('e2', '03_00', 'BDS', 'Paloma', this.checked)"></td><td>Paloma <input type="checkbox" id="e2-0300-Betvip-Paloma" onchange="salvar('e2', '03_00', 'Betvip', 'Paloma', this.checked)"></td><td>Paloma <input type="checkbox" id="e2-0300-Ganhei-Paloma" onchange="salvar('e2', '03_00', 'Ganhei', 'Paloma', this.checked)"></td><td>Paloma <input type="checkbox" id="e2-0300-Discord-Paloma" onchange="salvar('e2', '03_00', 'Discord', 'Paloma', this.checked)"></td><td>(Pausa de Ivah)</td></tr>
+                    <tr><td><strong>04:00</strong></td><td>Paloma <input type="checkbox" id="e2-0400-Pixbet-Paloma" onchange="salvar('e2', '04_00', 'Pixbet', 'Paloma', this.checked)"></td><td>Ivah <input type="checkbox" id="e2-0400-BDS-Ivah" onchange="salvar('e2', '04_00', 'BDS', 'Ivah', this.checked)"></td><td>Ivah <input type="checkbox" id="e2-0400-Betvip-Ivah" onchange="salvar('e2', '04_00', 'Betvip', 'Ivah', this.checked)"></td><td>Paloma <input type="checkbox" id="e2-0400-Ganhei-Paloma" onchange="salvar('e2', '04_00', 'Ganhei', 'Paloma', this.checked)"></td><td>Todos <input type="checkbox" id="e2-0400-Discord-Todos" onchange="salvar('e2', '04_00', 'Discord', 'Todos', this.checked)"></td><td>-</td></tr>
+                    <tr><td><strong>05:00</strong></td><td>Paloma <input type="checkbox" id="e2-0500-Pixbet-Paloma" onchange="salvar('e2', '05_00', 'Pixbet', 'Paloma', this.checked)"></td><td>Ivah <input type="checkbox" id="e2-0500-BDS-Ivah" onchange="salvar('e2', '05_00', 'BDS', 'Ivah', this.checked)"></td><td>Ivah <input type="checkbox" id="e2-0500-Betvip-Ivah" onchange="salvar('e2', '05_00', 'Betvip', 'Ivah', this.checked)"></td><td>Paloma <input type="checkbox" id="e2-0500-Ganhei-Paloma" onchange="salvar('e2', '05_00', 'Ganhei', 'Paloma', this.checked)"></td><td>Todos <input type="checkbox" id="e2-0500-Discord-Todos" onchange="salvar('e2', '05_00', 'Discord', 'Todos', this.checked)"></td><td>-</td></tr>
+                    <tr><td><strong>06:00</strong></td><td>Paloma <input type="checkbox" id="e2-0600-Pixbet-Paloma" onchange="salvar('e2', '06_00', 'Pixbet', 'Paloma', this.checked)"></td><td>Ivah <input type="checkbox" id="e2-0600-BDS-Ivah" onchange="salvar('e2', '06_00', 'BDS', 'Ivah', this.checked)"></td><td>Ivah <input type="checkbox" id="e2-0600-Betvip-Ivah" onchange="salvar('e2', '06_00', 'Betvip', 'Ivah', this.checked)"></td><td>Paloma <input type="checkbox" id="e2-0600-Ganhei-Paloma" onchange="salvar('e2', '06_00', 'Ganhei', 'Paloma', this.checked)"></td><td>Todos <input type="checkbox" id="e2-0600-Discord-Todos" onchange="salvar('e2', '06_00', 'Discord', 'Todos', this.checked)"></td><td>-</td></tr>
+                    <tr><td><strong>07:00</strong></td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="escala-bloco">
+            <div class="escala-titulo">Escala 3: Folga de Paloma</div>
+            <div class="folga-info">Observações de folgas: Folga de Paloma | Antônio de férias até 31/05</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Horário</th>
+                        <th>Pixbet</th>
+                        <th>BDS</th>
+                        <th>Betvip</th>
+                        <th>Ganhei</th>
+                        <th>Discord</th>
+                        <th>Pausa / Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>23:00</strong></td><td>Leandro <input type="checkbox" id="e3-2300-Pixbet-Leandro" onchange="salvar('e3', '23_00', 'Pixbet', 'Leandro', this.checked)"></td><td>Ivah <input type="checkbox" id="e3-2300-BDS-Ivah" onchange="salvar('e3', '23_00', 'BDS', 'Ivah', this.checked)"></td><td>Ivah <input type="checkbox" id="e3-2300-Betvip-Ivah" onchange="salvar('e3', '23_00', 'Betvip', 'Ivah', this.checked)"></td><td>Leandro <input type="checkbox" id="e3-2300-Ganhei-Leandro" onchange="salvar('e3', '23_00', 'Ganhei', 'Leandro', this.checked)"></td><td>Todos <input type="checkbox" id="e3-2300-Discord-Todos" onchange="salvar('e3', '23_00', 'Discord', 'Todos', this.checked)"></td><td>-</td></tr>
+                    <tr><td><strong>00:00</strong></td><td>Ivah <input type="checkbox" id="e3-0000-Pixbet-Ivah" onchange="salvar('e3', '00_00', 'Pixbet', 'Ivah', this.checked)"></td><td>Leandro <input type="checkbox" id="e3-0000-BDS-Leandro" onchange="salvar('e3', '00_00', 'BDS', 'Leandro', this.checked)"></td><td>Leandro <input type="checkbox" id="e3-0000-Betvip-Leandro" onchange="salvar('e3', '00_00', 'Betvip', 'Leandro', this.checked)"></td><td>Ivah <input type="checkbox" id="e3-0000-Ganhei-Ivah" onchange="salvar('e3', '00_00', 'Ganhei', 'Ivah', this.checked)"></td><td>Todos <input type="checkbox" id="e3-0000-Discord-Todos" onchange="salvar('e3', '00_00', 'Discord', 'Todos', this.checked)"></td><td>-</td></tr>
+                    <tr><td><strong>01:00</strong></td><td>Ivah <input type="checkbox" id="e3-0100-Pixbet-Ivah" onchange="salvar('e3', '01_00', 'Pixbet', 'Ivah', this.checked)"></td><td>Leandro <input type="checkbox" id="e3-0100-BDS-Leandro" onchange="salvar('e3', '01_00', 'BDS', 'Leandro', this.checked)"></td><td>Leandro <input type="checkbox" id="e3-0100-Betvip-Leandro" onchange="salvar('e3', '01_00', 'Betvip', 'Leandro', this.checked)"></td><td>Ivah <input type="checkbox" id="e3-0100-Ganhei-Ivah" onchange="salvar('e3', '01_00', 'Ganhei', 'Ivah', this.checked)"></td><td>Todos <input type="checkbox" id="e3-0100-Discord-Todos" onchange="salvar('e3', '01_00', 'Discord', 'Todos', this.checked)"></td><td>-</td></tr>
+                    <tr><td><strong>02:00</strong></td><td>Ivah <input type="checkbox" id="e3-0200-Pixbet-Ivah" onchange="salvar('e3', '02_00', 'Pixbet', 'Ivah', this.checked)"></td><td>Leandro <input type="checkbox" id="e3-0200-BDS-Leandro" onchange="salvar('e3', '02_00', 'BDS', 'Leandro', this.checked)"></td><td>Leandro <input type="checkbox" id="e3-0200-Betvip-Leandro" onchange="salvar('e3', '02_00', 'Betvip', 'Leandro', this.checked)"></td><td>Todos <input type="checkbox" id="e3-0200-Ganhei-Todos" onchange="salvar('e3', '02_00', 'Ganhei', 'Todos', this.checked)"></td><td>Todos <input type="checkbox" id="e3-0200-Discord-Todos" onchange="salvar('e3', '02_00', 'Discord', 'Todos', this.checked)"></td><td>-</td></tr>
+                    <tr><td><strong>03:00</strong></td><td>Leandro <input type="checkbox" id="e3-0300-Pixbet-Leandro" onchange="salvar('e3', '03_00', 'Pixbet', 'Leandro', this.checked)"></td><td>Leandro <input type="checkbox" id="e3-0300-BDS-Leandro" onchange="salvar('e3', '03_00', 'BDS', 'Leandro', this.checked)"></td><td>Leandro <input type="checkbox" id="e3-0300-Betvip-Leandro" onchange="salvar('e3', '03_00', 'Betvip', 'Leandro', this.checked)"></td><td>Leandro <input type="checkbox" id="e3-0300-Ganhei-Leandro" onchange="salvar('e3', '03_00', 'Ganhei', 'Leandro', this.checked)"></td><td>Leandro <input type="checkbox" id="e3-0300-Discord-Leandro" onchange="salvar('e3', '03_00', 'Discord', 'Leandro', this.checked)"></td><td>(Pausa de Ivah)</td></tr>
+                    <tr><td><strong>04:00</strong></td><td>Ivah <input type="checkbox" id="e3-0400-Pixbet-Ivah" onchange="salvar('e3', '04_00', 'Pixbet', 'Ivah', this.checked)"></td><td>Ivah <input type="checkbox" id="e3-0400-BDS-Ivah" onchange="salvar('e3', '04_00', 'BDS', 'Ivah', this.checked)"></td><td>Ivah <input type="checkbox" id="e3-0400-Betvip-Ivah" onchange="salvar('e3', '04_00', 'Betvip', 'Ivah', this.checked)"></td><td>Ivah <input type="checkbox" id="e3-0400-Ganhei-Ivah" onchange="salvar('e3', '04_00', 'Ganhei', 'Ivah', this.checked)"></td><td>Ivah <input type="checkbox" id="e3-0400-Discord-Ivah" onchange="salvar('e3', '04_00', 'Discord', 'Ivah', this.checked)"></td><td>(Pausa de Leandro)</td></tr>
+                    <tr><td><strong>05:00</strong></td><td>Leandro <input type="checkbox" id="e3-0500-Pixbet-Leandro" onchange="salvar('e3', '05_00', 'Pixbet', 'Leandro', this.checked)"></td><td>Ivah <input type="checkbox" id="e3-0500-BDS-Ivah" onchange="salvar('e3', '05_00', 'BDS', 'Ivah', this.checked)"></td><td>Ivah <input type="checkbox" id="e3-0500-Betvip-Ivah" onchange="salvar('e3', '05_00', 'Betvip', 'Ivah', this.checked)"></td><td>Leandro <input type="checkbox" id="e3-0500-Ganhei-Leandro" onchange="salvar('e3', '05_00', 'Ganhei', 'Leandro', this.checked)"></td><td>Todos <input type="checkbox" id="e3-0500-Discord-Todos" onchange="salvar('e3', '05_00', 'Discord', 'Todos', this.checked)"></td><td>-</td></tr>
+                    <tr><td><strong>06:00</strong></td><td>Leandro <input type="checkbox" id="e3-0600-Pixbet-Leandro" onchange="salvar('e3', '06_00', 'Pixbet', 'Leandro', this.checked)"></td><td>Ivah <input type="checkbox" id="e3-0600-BDS-Ivah" onchange="salvar('e3', '06_00', 'BDS', 'Ivah', this.checked)"></td><td>Ivah <input type="checkbox" id="e3-0600-Betvip-Ivah" onchange="salvar('e3', '06_00', 'Betvip', 'Ivah', this.checked)"></td><td>Leandro <input type="checkbox" id="e3-0600-Ganhei-Leandro" onchange="salvar('e3', '06_00', 'Ganhei', 'Leandro', this.checked)"></td><td>Todos <input type="checkbox" id="e3-0600-Discord-Todos" onchange="salvar('e3', '06_00', 'Discord', 'Todos', this.checked)"></td><td>-</td></tr>
+                    <tr><td><strong>07:00</strong></td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="escala-bloco">
+            <div class="escala-titulo">Escala 4: Folga de Ivah</div>
+            <div class="folga-info">Observações de folgas: Folga de Ivah | Antônio de férias até 31/05</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Horário</th>
+                        <th>Pixbet</th>
+                        <th>BDS</th>
+                        <th>Betvip</th>
+                        <th>Ganhei</th>
+                        <th>Discord</th>
+                        <th>Pausa / Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>23:00</strong></td><td>Paloma <input type="checkbox" id="e4-2300-Pixbet-Paloma" onchange="salvar('e4', '23_00', 'Pixbet', 'Paloma', this.checked)"></td><td>Leandro <input type="checkbox" id="e4-2300-BDS-Leandro" onchange="salvar('e4', '23_00', 'BDS', 'Leandro', this.checked)"></td><td>Leandro <input type="checkbox" id="e4-2300-Betvip-Leandro" onchange="salvar('e4', '23_00', 'Betvip', 'Leandro', this.checked)"></td><td>Paloma <input type="checkbox" id="e4-2300-Ganhei-Paloma" onchange="salvar('e4', '23_00', 'Ganhei', 'Paloma', this.checked)"></td><td>Todos <input type="checkbox" id="e4-2300-Discord-Todos" onchange="salvar('e4', '23_00', 'Discord', 'Todos', this.checked)"></td><td>-</td></tr>
+                    <tr><td><strong>00:00</strong></td><td>Paloma <input type="checkbox" id="e4-0000-Pixbet-Paloma" onchange="salvar('e4', '00_00', 'Pixbet', 'Paloma', this.checked)"></td><td>Leandro <input type="checkbox" id="e4-0000-BDS-Leandro" onchange="salvar('e4', '00_00', 'BDS', 'Leandro', this.checked)"></td><td>Leandro <input type="checkbox" id="e4-0000-Betvip-Leandro" onchange="salvar('e4', '00_00', 'Betvip', 'Leandro', this.checked)"></td><td>Paloma <input type="checkbox" id="e4-0000-Ganhei-Paloma" onchange="salvar('e4', '00_00', 'Ganhei', 'Paloma', this.checked)"></td><td>Todos <input type="checkbox" id="e4-0000-Discord-Todos" onchange="salvar('e4', '00_00', 'Discord', 'Todos', this.checked)"></td><td>-</td></tr>
+                    <tr><td><strong>01:00</strong></td><td>Paloma <input type="checkbox" id="e4-0100-Pixbet-Paloma" onchange="salvar('e4', '01_00', 'Pixbet', 'Paloma', this.checked)"></td><td>Leandro <input type="checkbox" id="e4-0100-BDS-Leandro" onchange="salvar('e4', '01_00', 'BDS', 'Leandro', this.checked)"></td><td>Leandro <input type="checkbox" id="e4-0100-Betvip-Leandro" onchange="salvar('e4', '01_00', 'Betvip', 'Leandro', this.checked)"></td><td>Paloma <input type="checkbox" id="e4-0100-Ganhei-Paloma" onchange="salvar('e4', '01_00', 'Ganhei', 'Paloma', this.checked)"></td><td>Todos <input type="checkbox" id="e4-0100-Discord-Todos" onchange="salvar('e4', '01_00', 'Discord', 'Todos', this.checked)"></td><td>-</td></tr>
+                    <tr><td><strong>02:00</strong></td><td>Leandro <input type="checkbox" id="e4-0200-Pixbet-Leandro" onchange="salvar('e4', '02_00', 'Pixbet', 'Leandro', this.checked)"></td><td>Leandro <input type="checkbox" id="e4-0200-BDS-Leandro" onchange="salvar('e4', '02_00', 'BDS', 'Leandro', this.checked)"></td><td>Leandro <input type="checkbox" id="e4-0200-Betvip-Leandro" onchange="salvar('e4', '02_00', 'Betvip', 'Leandro', this.checked)"></td><td>Leandro <input type="checkbox" id="e4-0200-Ganhei-Leandro" onchange="salvar('e4', '02_00', 'Ganhei', 'Leandro', this.checked)"></td><td>Leandro <input type="checkbox" id="e4-0200-Discord-Leandro" onchange="salvar('e4', '02_00', 'Discord', 'Leandro', this.checked)"></td><td>(Pausa de Paloma)</td></tr>
+                    <tr><td><strong>03:00</strong></td><td>Paloma <input type="checkbox" id="e4-0300-Pixbet-Paloma" onchange="salvar('e4', '03_00', 'Pixbet', 'Paloma', this.checked)"></td><td>Paloma <input type="checkbox" id="e4-0300-BDS-Paloma" onchange="salvar('e4', '03_00', 'BDS', 'Paloma', this.checked)"></td><td>Paloma <input type="checkbox" id="e4-0300-Betvip-Paloma" onchange="salvar('e4', '03_00', 'Betvip', 'Paloma', this.checked)"></td><td>Paloma <input type="checkbox" id="e4-0300-Ganhei-Paloma" onchange="salvar('e4', '03_00', 'Ganhei', 'Paloma', this.checked)"></td><td>Paloma <input type="checkbox" id="e4-0300-Discord-Paloma" onchange="salvar('e4', '03_00', 'Discord', 'Paloma', this.checked)"></td><td>(Pausa de Leandro)</td></tr>
+                    <tr><td><strong>04:00</strong></td><td>Leandro <input type="checkbox" id="e4-0400-Pixbet-Leandro" onchange="salvar('e4', '04_00', 'Pixbet', 'Leandro', this.checked)"></td><td>Paloma <input type="checkbox" id="e4-0400-BDS-Paloma" onchange="salvar('e4', '04_00', 'BDS', 'Paloma', this.checked)"></td><td>Paloma <input type="checkbox" id="e4-0400-Betvip-Paloma" onchange="salvar('e4', '04_00', 'Betvip', 'Paloma', this.checked)"></td><td>Leandro <input type="checkbox" id="e4-0400-Ganhei-Leandro" onchange="salvar('e4', '04_00', 'Ganhei', 'Leandro', this.checked)"></td><td>Todos <input type="checkbox" id="e4-0400-Discord-Todos" onchange="salvar('e4', '04_00', 'Discord', 'Todos', this.checked)"></td><td>-</td></tr>
+                    <tr><td><strong>05:00</strong></td><td>Leandro <input type="checkbox" id="e4-0500-Pixbet-Leandro" onchange="salvar('e4', '05_00', 'Pixbet', 'Leandro', this.checked)"></td><td>Paloma <input type="checkbox" id="e4-0500-BDS-Paloma" onchange="salvar('e4', '05_00', 'BDS', 'Paloma', this.checked)"></td><td>Paloma <input type="checkbox" id="e4-0500-Betvip-Paloma" onchange="salvar('e4', '05_00', 'Betvip', 'Paloma', this.checked)"></td><td>Leandro <input type="checkbox" id="e4-0500-Ganhei-Leandro" onchange="salvar('e4', '05_00', 'Ganhei', 'Leandro', this.checked)"></td><td>Todos <input type="checkbox" id="e4-0500-Discord-Todos" onchange="salvar('e4', '05_00', 'Discord', 'Todos', this.checked)"></td><td>-</td></tr>
+                    <tr><td><strong>06:00</strong></td><td>Leandro <input type="checkbox" id="e4-0600-Pixbet-Leandro" onchange="salvar('e4', '06_00', 'Pixbet', 'Leandro', this.checked)"></td><td>Paloma <input type="checkbox" id="e4-0600-BDS-Paloma" onchange="salvar('e4', '06_00', 'BDS', 'Paloma', this.checked)"></td><td>Paloma <input type="checkbox" id="e4-0600-Betvip-Paloma" onchange="salvar('e4', '06_00', 'Betvip', 'Paloma', this.checked)"></td><td>Leandro <input type="checkbox" id="e4-0600-Ganhei-Leandro" onchange="salvar('e4', '06_00', 'Ganhei', 'Leandro', this.checked)"></td><td>Todos <input type="checkbox" id="e4-0600-Discord-Todos" onchange="salvar('e4', '06_00', 'Discord', 'Todos', this.checked)"></td><td>-</td></tr>
+                    <tr><td><strong>07:00</strong></td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="obs-box">
+            <strong>DIRETRIZES DA OPERAÇÃO:</strong><br>
+            A função "suporte" sempre estará voltada ao saque, principalmente em casas com alto número de saques devido a promoções ativas, isso requer de vocês comunicação e organização quando tiver mais de um colaborador por plataforma.
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-analytics.js";
+        import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-database.js";
+
+        // Suas credenciais exatas anexadas aqui
+        const firebaseConfig = {
+            apiKey: "AIzaSyBUtHF-AuRkhPoXfkFsfWyPOBHwy8_mPSw",
+            authDomain: "escala-ad3f2.firebaseapp.com",
+            databaseURL: "https://escala-ad3f2-default-rtdb-firebaseio.com",
+            projectId: "escala-ad3f2",
+            storageBucket: "escala-ad3f2.firebasestorage.app",
+            messagingSenderId: "299403679280",
+            appId: "1:299403679280:web:158fb997702454ea4f7ff5",
+            measurementId: "G-V0SHYQDPG1"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const db = getDatabase(app);
+
+        // Envia o clique do check-in individual para o banco de dados em tempo real
+        window.salvar = function(escala, horario, plataforma, colaborador, status) {
+            const path = `escalasRealtime/${escala}/${horario}/${plataforma}/${colaborador}`;
+            set(ref(db, path), status).catch(err => console.error("Erro ao salvar:", err));
+        };
+
+        // Escuta e sincroniza os check-ins na tela de todos os colaboradores online
+        const dadosRef = ref(db, 'escalasRealtime');
+        onValue(dadosRef, (snapshot) => {
+            const data = snapshot.val();
+            if (data) {
+                Object.keys(data).forEach(escala => {
+                    Object.keys(data[escala]).forEach(horario => {
+                        Object.keys(data[escala][horario]).forEach(plataforma => {
+                            Object.keys(data[escala][horario][plataforma]).forEach(colaborador => {
+                                const status = data[escala][horario][plataforma][colaborador];
+                                const hrId = horario.replace('_', '');
+                                const idElemento = `${escala}-${hrId}-${plataforma}-${colaborador}`;
+                                const checkbox = document.getElementById(idElemento);
+                                if (checkbox) {
+                                    checkbox.checked = status;
+                                }
+                            });
+                        });
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
