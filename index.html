@@ -8,8 +8,13 @@
         body { font-family: 'Segoe UI', sans-serif; background-color: #0b0f19; color: #fff; padding: 20px; }
         .container { max-width: 1100px; margin: auto; background: #111625; padding: 25px; border-radius: 12px; border: 1px solid #D4AF37; }
         h1 { color: #D4AF37; text-align: center; text-transform: uppercase; font-size: 1.6em; margin-bottom: 5px; }
-        .subtitle { text-align: center; color: #8a99ad; font-size: 0.9em; margin-bottom: 30px; }
+        .subtitle { text-align: center; color: #8a99ad; font-size: 0.9em; margin-bottom: 20px; }
         
+        /* Botão de Limpar Banco de Dados */
+        .btn-container { text-align: center; margin-bottom: 30px; }
+        .btn-limpar { background-color: transparent; color: #ef4444; border: 1px solid #ef4444; padding: 8px 16px; font-size: 0.85em; font-weight: bold; text-transform: uppercase; border-radius: 4px; cursor: pointer; transition: all 0.3s ease; }
+        .btn-limpar:hover { background-color: #ef4444; color: #fff; box-shadow: 0 0 8px rgba(239, 68, 68, 0.4); }
+
         /* Blocos de Tabelas (As 4 Escalas) */
         .escala-bloco { margin-bottom: 40px; background: #171e30; padding: 20px; border-radius: 8px; border: 1px solid #24314f; }
         .escala-titulo { color: #D4AF37; font-size: 1.2em; font-weight: bold; text-transform: uppercase; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 2px solid #D4AF37; }
@@ -30,6 +35,10 @@
     <div class="container">
         <h1>Painel de Escala & Check-in</h1>
         <div class="subtitle">Monitoramento de Plataformas em Tempo Real ⚓</div>
+
+        <div class="btn-container">
+            <button class="btn-limpar" onclick="limparTudo()">Limpar Check-ins da Escala</button>
+        </div>
 
         <div class="escala-bloco">
             <div class="escala-titulo">Escala 1: Todos Operando</div>
@@ -158,7 +167,6 @@
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-analytics.js";
         import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-database.js";
 
-        // Configuração com a databaseURL corrigida para sincronizar perfeitamente
         const firebaseConfig = {
             apiKey: "AIzaSyBUtHF-AuRkhPoXfkFsfWyPOBHwy8_mPSw",
             authDomain: "escala-ad3f2.firebaseapp.com",
@@ -174,16 +182,34 @@
         const analytics = getAnalytics(app);
         const db = getDatabase(app);
 
-        // Envia o clique do check-in individual para o banco de dados em tempo real
+        const dadosRef = ref(db, 'escalasRealtime');
+
+        // Envia o clique do check-in individual para o banco de dados
         window.salvar = function(escala, horario, plataforma, colaborador, status) {
             const path = `escalasRealtime/${escala}/${horario}/${plataforma}/${colaborador}`;
             set(ref(db, path), status).catch(err => console.error("Erro ao salvar:", err));
         };
 
+        // Função para limpar todos os check-ins no banco de dados de uma vez
+        window.limparTudo = function() {
+            if (confirm("Tem certeza absoluta de que deseja limpar todos os check-ins desta rodada?")) {
+                set(dadosRef, null)
+                    .then(() => {
+                        alert("Todos os check-ins foram limpos com sucesso!");
+                    })
+                    .catch(err => console.error("Erro ao limpar dados:", err));
+            }
+        };
+
         // Escuta e sincroniza os check-ins na tela de todos os colaboradores online
-        const dadosRef = ref(db, 'escalasRealtime');
         onValue(dadosRef, (snapshot) => {
             const data = snapshot.val();
+            
+            // Primeiro, desmarca todos os checkboxes da tela por garantia (caso o banco tenha sido limpo)
+            const todosCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+            todosCheckboxes.forEach(cb => cb.checked = false);
+
+            // Se existirem dados no banco, marca os corretos
             if (data) {
                 Object.keys(data).forEach(escala => {
                     Object.keys(data[escala]).forEach(horario => {
