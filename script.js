@@ -13,8 +13,6 @@ const firebaseConfig = {
 // Inicializa o aplicativo Firebase
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
-
-// Referência única dentro do banco de dados para os cliques em tempo real
 const escalaRef = database.ref('celulasMarcadas');
 
 const matrizesEscala = {
@@ -69,13 +67,15 @@ let celulasMarcadas = new Set();
 const hoje = new Date();
 document.getElementById('shift-date').value = hoje.toISOString().split('T')[0];
 
+// NOVO TEMPLATE SOLICITADO
 function gerarTemplateRelatorio(dataString) {
     const dataInvertida = dataString.split('-').reverse().join('/');
-    return `Relatório financeiro ( madrugada )\n` +
+    return `FLASH REPORT - (MADRUGADA)\n` +
            `Data: ${dataInvertida}\n\n` +
-           `• Ocorrências do Turno:\n\n` +
-           `Final do relatório: Um bom dia a todos!\n` +
-           `E bom trabalho.`;
+           `Bom dia, pessoal!\n\n` +
+           `Templates Ativos: PIXBET | BETDÁSORTE | GANHEIBET | BETVIP\n\n` +
+           `Ocorrências: \n\n` +
+           `Tenham um ótimo dia de trabalho!`;
 }
 
 document.getElementById('report-text').value = gerarTemplateRelatorio(document.getElementById('shift-date').value);
@@ -122,11 +122,8 @@ function mudarCenarioEscala() {
         `;
         tbody.appendChild(tr);
     });
-    
-    atualizarListaAssinaturas();
 }
 
-// SINCRONIZAÇÃO EM TEMPO REAL (ENVIO): Envia o clique isolado para o banco de dados
 function ejecutarCheckInIndividual(cellId) {
     if (celulasMarcadas.has(cellId)) {
         escalaRef.child(cellId).remove();
@@ -135,7 +132,6 @@ function ejecutarCheckInIndividual(cellId) {
     }
 }
 
-// OUVINTE EM TEMPO REAL (RECEBIMENTO): Aplica a cor verde na tela de todo mundo instantaneamente
 escalaRef.on('value', (snapshot) => {
     celulasMarcadas.clear();
     const dados = snapshot.val();
@@ -148,47 +144,10 @@ escalaRef.on('value', (snapshot) => {
     mudarCenarioEscala();
 });
 
-function atualizarListaAssinaturas() {
-    let operadoresAtivos = new Set();
-    
-    celulasMarcadas.forEach(cellId => {
-        const elemento = document.getElementById(cellId);
-        if (elementos) operadoresAtivos.add(elemento.innerText);
-    });
-
-    const boxAssinatura = document.getElementById('selected-operators-container');
-    if (operadoresAtivos.size === 0) {
-        boxAssinatura.innerHTML = '<span style="color: #64748b; font-size: 13px; font-style: italic;">Nenhum operador marcou presença nesta rodada.</span>';
-    } else {
-        boxAssinatura.innerHTML = Array.from(operadoresAtivos).map(op => `<span class="operator-tag">${op}</span>`).join('');
-    }
-}
-
-// BOTÃO DE LIMPAR EM TEMPO REAL: Remove tudo do Firebase e limpa a tela de todos ao mesmo tempo
 document.getElementById('btnLimparEscala').addEventListener('click', function() {
     if (confirm("Você tem certeza que deseja limpar todos os check-ins atuais para TODOS os usuários ativos?")) {
         escalaRef.remove();
     }
 });
-
-function enviarWhatsApp() {
-    const telefoneDestino = "558391660525";
-    const textoCorpo = document.getElementById('report-text').value;
-    
-    let operadoresAtivos = new Set();
-    celulasMarcadas.forEach(cellId => {
-        const elemento = document.getElementById(cellId);
-        if (elemento) operadoresAtivos.add(elemento.innerText);
-    });
-
-    let blocoOperadores = "\n\n✍️ Operador(es) em questão:\n";
-    if (operadoresAtivos.size > 0) {
-        blocoOperadores += Array.from(operadoresAtivos).map(op => `- ${op}`).join('\n');
-    } else {
-        blocoOperadores += "- Ninguém assinou o turno";
-    }
-
-    window.open(`https://api.whatsapp.com/send?phone=${telefoneDestino}&text=${encodeURIComponent(textoCorpo + blocoOperadores)}`, '_blank');
-}
 
 mudarCenarioEscala();
