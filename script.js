@@ -67,14 +67,14 @@ let celulasMarcadas = new Set();
 const hoje = new Date();
 document.getElementById('shift-date').value = hoje.toISOString().split('T')[0];
 
-// NOVO TEMPLATE SOLICITADO
+// SEU NOVO CONTEÚDO EXATO PARA A CAIXA DE TEXTO
 function gerarTemplateRelatorio(dataString) {
     const dataInvertida = dataString.split('-').reverse().join('/');
     return `FLASH REPORT - (MADRUGADA)\n` +
            `Data: ${dataInvertida}\n\n` +
            `Bom dia, pessoal!\n\n` +
-           `Templates Ativos: PIXBET | BETDÁSORTE | GANHEIBET | BETVIP\n\n` +
-           `Ocorrências: \n\n` +
+           `PIXBET | BETDÁSORTE | GANHEIBET | BETVIP\n\n` +
+           `Ocorrências:\n\n` +
            `Tenham um ótimo dia de trabalho!`;
 }
 
