@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel de Escala de Turnos - Modo Escuro</title>
     
+    <!-- Scripts do Firebase (Importante estarem acima do style.css) -->
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
 
@@ -15,14 +16,14 @@
     <div class="container">
         <div class="header">
             <h1>Sistema Operacional de Escalas por Horário</h1>
-            <p>Visualização Ativa de Turnos, Check-in de Presença e Fechamento de Relatório Financeiro</p>
+            <p>Visualização Ativa de Turnos, Check-in de Presença e Controle Operacional</p>
         </div>
 
         <div class="grid-layout">
+            <!-- COLUNA ESQUERDA: Grade da Escala -->
             <div class="column-left">
                 <div class="section-title">
                     <span>📋 Grade Horária do Turno</span>
-                    <span class="status-badge">Antônio de férias até 31/05</span>
                 </div>
                 
                 <div class="selectors-grid">
@@ -55,10 +56,12 @@
                             </tr>
                         </thead>
                         <tbody id="table-body">
-                            </tbody>
+                            <!-- Injetado via JavaScript -->
+                        </tbody>
                     </table>
                 </div>
 
+                <!-- Botão de Limpar -->
                 <div style="margin-top: 15px; text-align: left;">
                     <button type="button" class="btn-limpar" id="btnLimparEscala">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 6px; vertical-align: middle;">
@@ -70,24 +73,14 @@
                 </div>
             </div>
 
+            <!-- COLUNA DIREITA: Apenas o Texto do Estruturado -->
             <div class="column-right">
-                <div class="section-title">📝 Relatório Financeiro (Madrugada)</div>
+                <div class="section-title">📝 Estrutura do Flash Report</div>
                 
                 <div class="form-group">
-                    <label for="report-text">Conteúdo do Relatório Estruturado:</label>
-                    <textarea id="report-text" class="input-field"></textarea>
+                    <label for="report-text">Copie o texto estruturado abaixo:</label>
+                    <textarea id="report-text" class="input-field" style="min-height: 340px;"></textarea>
                 </div>
-
-                <div class="operators-footer-list">
-                    <h4>Operadores Ativos (Confirmados por clique acima):</h4>
-                    <div id="selected-operators-container">
-                        <span style="color: #64748b; font-size: 13px; font-style: italic;">Nenhum operador marcou presença nesta rodada.</span>
-                    </div>
-                </div>
-
-                <button type="button" class="btn-whatsapp" onclick="enviarWhatsApp()">
-                    Concluir e Enviar para WhatsApp da Empresa
-                </button>
             </div>
         </div>
     </div>
